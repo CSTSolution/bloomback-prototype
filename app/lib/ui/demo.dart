@@ -82,6 +82,9 @@ class ScenarioTile extends StatelessWidget {
 
 /// Web demo: a strip above every screen (onboarding included) with the
 /// synthetic-data notice and the scenario picker.
+/// Width of the phone column on a wide screen (web demo).
+const double kDemoPhoneWidth = 430;
+
 class DemoBanner extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final Widget child;
@@ -123,7 +126,27 @@ class DemoBanner extends StatelessWidget {
         ),
       ),
       Expanded(
-        child: MediaQuery.removePadding(context: context, removeTop: true, child: child),
+        child: LayoutBuilder(builder: (context, box) {
+          // On a laptop or desktop screen the app sits in a phone-width column, as it does on a phone; on a
+          // phone-sized window it uses the full width.
+          final narrow = box.maxWidth <= kDemoPhoneWidth + 120;
+          final w = narrow ? box.maxWidth : kDemoPhoneWidth;
+          final inner = MediaQuery(
+            data: mq.removePadding(removeTop: true).copyWith(size: Size(w, box.maxHeight)),
+            child: child,
+          );
+          if (narrow) return inner;
+          return ColoredBox(
+            color: const Color(0xFFE9E4D8),
+            child: Center(
+              child: Container(
+                width: w,
+                decoration: const BoxDecoration(boxShadow: [BoxShadow(color: Color(0x33000000), blurRadius: 24)]),
+                child: ClipRect(child: inner),
+              ),
+            ),
+          );
+        }),
       ),
     ]);
   }
