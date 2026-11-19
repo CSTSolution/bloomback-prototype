@@ -111,10 +111,23 @@ void onSample(uint32_t t, float ax, float ay, float az) {
 }
 
 #ifdef BB_DEMO_STEPS
+// DEMO ONLY: one fixed scene for filming the board (Chi, thread 0010, 19 Nov): persona Ravi at 07:30 after his
+// night shift. Screen only: nothing here is stored or synced, and the DEMO tag stays on every screen.
+struct DemoScene {
+  bool on = false;
+  uint32_t steps = 0;
+  uint16_t active = 0;
+  int sleepStart = 0, sleepEnd = 0;
+  uint16_t sleepMinutes = 0;
+  const char* habit = "";
+};
+DemoScene demoScene;
+
 // DEMO ONLY (env cyd, until the MPU6050 is plugged in): with no motion sensor, make walking-pace steps so the
 // screens, sync and app can be shown end to end. Walks 10 min at ~105 steps/min, then rests 10 min. The screen
 // says "demo steps" while this runs; with a sensor present it never runs.
 void demoSteps(uint32_t now) {
+  if (demoScene.on) return;  // the filming scene keeps its numbers still
   static uint32_t last = 0;
   if (now - last < 2000) return;
   last = now;
@@ -211,6 +224,7 @@ size_t usbLen = 0;
 
 #ifdef BB_TOUCH
 void refreshView();
+void show(Screen s);
 // USB-only helpers for the touch-screen demo board, used to test and to take screenshots without a pen:
 //   tap <x> <y>                     a tap at screen pixel x,y
 //   touchcal                        start the 4-corner touch setup
@@ -218,6 +232,10 @@ void refreshView();
 //   preview <screen> <page> <choice>  draw that screen once (finished animations) and print it like `screen`
 //   frame <screen> <page> <choice> <t_ms> [sync_age_ms]   one frame of a recording (tools/cydvideo.py)
 //   baud <115200|460800|921600>     USB speed for recordings
+//   demo ravi [HH:MM]               filming scene (needs BB_DEMO_STEPS): Ravi, "Straight to bed after shift",
+//                                   4,860 steps, 12 active min, last sleep 08:03-14:03; clock set to HH:MM local
+//                                   (default 07:29; send `time` first). `demo remind` = reminder screen now,
+//                                   `demo off` = back to the moving demo numbers
 bool usbDemoCommand(char* line, size_t n) {
   const char keep = line[n];  // the line end: put it back if the line is not ours (the protocol needs it)
   line[n] = '\0';
@@ -261,6 +279,40 @@ bool usbDemoCommand(char* line, size_t n) {
     Serial.updateBaudRate(a);
     return true;
   }
+#ifdef BB_DEMO_STEPS
+  if (strcmp(line, "demo ravi") == 0 || strncmp(line, "demo ravi ", 10) == 0) {
+    int hh = 7, mm = 29;
+    sscanf(line, "demo ravi %d:%d", &hh, &mm);
+    ui::setOwner("Ravi");
+    demoScene.on = true;
+    demoScene.steps = 4860;
+    demoScene.active = 12;
+    demoScene.sleepStart = 8 * 60 + 3;
+    demoScene.sleepEnd = 14 * 60 + 3;
+    demoScene.sleepMinutes = 337;
+    demoScene.habit = "Straight to bed after shift";
+    if (clockValid) {
+      const int64_t tz = cfg.tzMin;
+      const int64_t local = (int64_t)time(nullptr) + tz * 60;
+      const int64_t day = local - (local % 86400);
+      setClock((uint32_t)(day + constrain(hh, 0, 23) * 3600 + constrain(mm, 0, 59) * 60 - tz * 60));
+    }
+    dirty = true;
+    Serial.println(clockValid ? "OK demo ravi" : "OK demo ravi (clock not set: send time, then demo ravi again)");
+    return true;
+  }
+  if (strcmp(line, "demo remind") == 0) {
+    show(Screen::Remind);
+    Serial.println("OK demo remind");
+    return true;
+  }
+  if (strcmp(line, "demo off") == 0) {
+    demoScene.on = false;
+    dirty = true;
+    Serial.println("OK demo off");
+    return true;
+  }
+#endif
   if (sscanf(line, "preview %d %d %d", &a, &b, &c) >= 1) {
     refreshView();
     UiModel m = view;
@@ -339,6 +391,15 @@ void refreshView() {
     view.sleepStartMod = 23 * 60 + 20;
     view.sleepEndMod = 6 * 60 + 5;
     view.sleepMinutes = 385;
+  }
+  if (demoScene.on) {
+    view.steps = demoScene.steps;
+    view.active = demoScene.active;
+    view.sleepFound = true;
+    view.sleepStartMod = demoScene.sleepStart;
+    view.sleepEndMod = demoScene.sleepEnd;
+    view.sleepMinutes = demoScene.sleepMinutes;
+    view.habit = demoScene.habit;
   }
 #endif
 }
