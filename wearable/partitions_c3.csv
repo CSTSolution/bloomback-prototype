@@ -1,0 +1,8 @@
+# ESP32-C3, 4 MB flash. One app (no OTA: the band is flashed over USB) and a big
+# LittleFS for 60 days of minute files (~17 KB a day, one file per day).
+# Name,   Type, SubType,  Offset,   Size
+nvs,      data, nvs,      0x9000,   0x5000
+phy_init, data, phy,      0xe000,   0x1000
+factory,  app,  factory,  0x10000,  0x1E0000
+spiffs,   data, spiffs,   0x1F0000, 0x200000
+coredump, data, coredump, 0x3F0000, 0x10000

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BloomBack system</title>
+<style>
+  :root { --bg: #f4f1ea; --ink: #23262b; --muted: #6b6f76; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+  #wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100%; padding: 12px; box-sizing: border-box; }
+  svg { width: 100%; max-width: 1280px; height: auto; display: block; border-radius: 14px; }
+  #ctrl { display: flex; gap: 10px; align-items: center; margin-top: 10px; font-size: 14px; color: var(--muted); flex-wrap: wrap; justify-content: center; }
+  #ctrl button { font: inherit; padding: 6px 12px; border-radius: 8px; border: 1px solid #c9c4b8; background: #fff; color: var(--ink); cursor: pointer; }
+  #ctrl input { width: 260px; }
+  body.capture #ctrl { display: none; }
+  body.capture #wrap { padding: 0; }
+  body.capture svg { border-radius: 0; max-width: none; width: 1280px; }
+  text { font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+</style>
+</head>
+<body>
+<div id="wrap">
+<svg id="stage" viewBox="0 0 1280 720" role="img" aria-labelledby="ttl desc">
+  <title id="ttl">BloomBack system animation</title>
+  <desc id="desc">A wrist band measures movement and sleep, pairs with a phone using a code, syncs over Bluetooth, the app suggests one small step, check-ins and lapses are handled without blame, and data stays on the band and the phone.</desc>
+  <rect id="bg" x="0" y="0" width="1280" height="720" fill="#f4f1ea"/>
+
+  <text id="title" x="40" y="52" font-size="26" font-weight="600" fill="#23262b">BloomBack: band + phone</text>
+  <text id="scene" x="40" y="84" font-size="18" fill="#6b6f76">1 · Measure</text>
+  <g id="dots"></g>
+
+  <!-- moon -->
+  <g id="moon" opacity="0">
+    <circle cx="560" cy="160" r="34" fill="#f2d98a"/>
+    <circle cx="576" cy="148" r="30" fill="#1e2433" id="moonCut"/>
+    <circle cx="640" cy="130" r="3" fill="#f2d98a"/><circle cx="500" cy="200" r="2.5" fill="#f2d98a"/><circle cx="660" cy="210" r="2" fill="#f2d98a"/>
+  </g>
+
+  <!-- band -->
+  <g id="band">
+    <rect x="300" y="150" width="100" height="420" rx="40" fill="#3f5566"/>
+    <rect x="250" y="268" width="200" height="176" rx="30" fill="#24282e"/>
+    <rect x="272" y="296" width="156" height="92" rx="8" fill="#000"/>
+    <text id="oled1" x="350" y="345" font-size="34" font-weight="600" fill="#7fe3d0" text-anchor="middle">0</text>
+    <text id="oled2" x="350" y="374" font-size="15" fill="#7fe3d0" text-anchor="middle">steps</text>
+    <circle id="btn" cx="458" cy="356" r="9" fill="#9aa7b2"/>
+    <text x="350" y="420" font-size="12" fill="#8b949e" text-anchor="middle">BloomBack-7C21</text>
+  </g>
+  <polyline id="wave" fill="none" stroke="#1d9e75" stroke-width="3" stroke-linecap="round" points=""/>
+  <text id="waveLbl" x="350" y="636" font-size="14" fill="#6b6f76" text-anchor="middle">motion sensor · 25 samples a second</text>
+
+  <!-- sleep bar -->
+  <g id="sleepBar" opacity="0">
+    <rect x="170" y="590" width="360" height="18" rx="9" fill="#3a4152"/>
+    <rect id="sleepFill" x="170" y="590" width="0" height="18" rx="9" fill="#8f86e0"/>
+    <text x="350" y="632" font-size="15" fill="#d9dcf5" text-anchor="middle">Sleep 08:10–13:40 · estimate</text>
+  </g>
+
+  <!-- lapse calendar -->
+  <g id="cal" opacity="0"></g>
+
+  <!-- link -->
+  <path id="link" d="M 470 356 C 600 270, 720 270, 856 356" fill="none" stroke="#8fb9ad" stroke-width="3" stroke-dasharray="8 8"/>
+  <text id="linkLbl" x="663" y="262" font-size="15" fill="#4f7e72" text-anchor="middle" opacity="0">Bluetooth LE · paired · encrypted</text>
+  <g id="lock" opacity="0" transform="translate(648 300)">
+    <path id="shackle" d="M 4 0 L 4 -10 A 11 11 0 0 1 26 -10 L 26 0" fill="none" stroke="#4f7e72" stroke-width="4"/>
+    <rect x="-2" y="0" width="34" height="26" rx="5" fill="#4f7e72"/>
+  </g>
+  <g id="packets"></g>
+  <circle id="tapDot" r="9" fill="#1d9e75" opacity="0"/>
+
+  <!-- server (privacy) -->
+  <g id="server" opacity="0">
+    <rect x="500" y="540" width="200" height="64" rx="10" fill="#e9e6de" stroke="#b8b2a4" stroke-dasharray="5 4"/>
+    <text x="600" y="566" font-size="15" fill="#5f5e5a" text-anchor="middle">CST server</text>
+    <text x="600" y="588" font-size="12" fill="#6b6f76" text-anchor="middle">optional AI wording only</text>
+    <line x1="710" y1="572" x2="836" y2="572" stroke="#b8b2a4" stroke-width="3" stroke-dasharray="6 6"/>
+    <line x1="763" y1="560" x2="787" y2="584" stroke="#ba7517" stroke-width="4" stroke-linecap="round"/>
+    <line x1="787" y1="560" x2="763" y2="584" stroke="#ba7517" stroke-width="4" stroke-linecap="round"/>
+    <text x="775" y="548" font-size="13" fill="#854f0b" text-anchor="middle">raw data: never</text>
+  </g>
+  <g id="keep" opacity="0">
+    <rect x="236" y="130" width="228" height="456" rx="46" fill="none" stroke="#1d9e75" stroke-width="3" stroke-dasharray="10 6"/>
+    <text x="350" y="122" font-size="15" fill="#0f6e56" text-anchor="middle">stays on the band · 60 days</text>
+    <rect x="846" y="96" width="288" height="558" rx="44" fill="none" stroke="#1d9e75" stroke-width="3" stroke-dasharray="10 6"/>
+    <text x="990" y="88" font-size="15" fill="#0f6e56" text-anchor="middle">stays on the phone</text>
+  </g>
+
+  <!-- phone -->
+  <g id="phone">
+    <rect x="860" y="110" width="260" height="530" rx="38" fill="#15181c"/>
+    <rect x="872" y="130" width="236" height="490" rx="26" fill="#faf8f3"/>
+    <rect x="955" y="118" width="70" height="6" rx="3" fill="#2c3036"/>
+    <text x="890" y="162" font-size="17" font-weight="600" fill="#0f6e56">BloomBack</text>
+
+    <g id="scrIdle">
+      <circle cx="990" cy="300" r="40" fill="#e1f5ee"/>
+      <path d="M 990 278 C 1006 290, 1006 312, 990 322 C 974 312, 974 290, 990 278 Z" fill="#1d9e75"/>
+      <text x="990" y="380" font-size="15" fill="#444" text-anchor="middle">Band not paired yet</text>
+      <text x="990" y="402" font-size="13" fill="#888" text-anchor="middle">The app also works without it</text>
+    </g>
+
+    <g id="scrPair" opacity="0">
+      <text x="990" y="214" font-size="16" font-weight="600" fill="#23262b" text-anchor="middle">Pair BloomBack-7C21</text>
+      <text x="990" y="238" font-size="12.5" fill="#666" text-anchor="middle">Type the code shown on the band</text>
+      <g id="codeBoxes"></g>
+      <rect id="pairBtn" x="920" y="340" width="140" height="40" rx="20" fill="#cfe9df"/>
+      <text x="990" y="366" font-size="15" fill="#0f6e56" text-anchor="middle">Pair</text>
+    </g>
+
+    <g id="scrSync" opacity="0">
+      <text x="990" y="224" font-size="16" font-weight="600" fill="#23262b" text-anchor="middle">Syncing with band</text>
+      <rect x="902" y="262" width="176" height="12" rx="6" fill="#e6e1d6"/>
+      <rect id="syncFill" x="902" y="262" width="0" height="12" rx="6" fill="#1d9e75"/>
+      <text id="syncCount" x="990" y="306" font-size="22" font-weight="600" fill="#0f6e56" text-anchor="middle">0</text>
+      <text x="990" y="328" font-size="13" fill="#666" text-anchor="middle">new minutes</text>
+      <text x="990" y="380" font-size="12.5" fill="#888" text-anchor="middle">only what is new · a few seconds</text>
+    </g>
+
+    <g id="scrToday" opacity="0">
+      <text x="890" y="190" font-size="13" fill="#888">Today</text>
+      <g id="c1"><rect x="886" y="200" width="208" height="62" rx="12" fill="#efedfb"/>
+        <text x="898" y="222" font-size="12" fill="#534ab7">Sleep · estimate · watch</text>
+        <text x="898" y="248" font-size="19" font-weight="600" fill="#3c3489">5 h 10 min</text></g>
+      <g id="c2"><rect x="886" y="270" width="208" height="62" rx="12" fill="#e1f5ee"/>
+        <text x="898" y="292" font-size="12" fill="#0f6e56">Steps · watch</text>
+        <text x="898" y="318" font-size="19" font-weight="600" fill="#085041">6,214</text></g>
+      <g id="c3"><rect x="886" y="340" width="208" height="70" rx="12" fill="#e1f5ee"/>
+        <text x="898" y="362" font-size="12" fill="#0f6e56">Walking this week · watch</text>
+        <text x="898" y="384" font-size="15" font-weight="600" fill="#085041">42 of 50 min</text>
+        <rect x="898" y="394" width="184" height="8" rx="4" fill="#c4e6d8"/>
+        <rect id="walkFill" x="898" y="394" width="0" height="8" rx="4" fill="#1d9e75"/></g>
+      <g id="c4"><rect x="886" y="418" width="208" height="86" rx="12" fill="#faeeda"/>
+        <text x="898" y="440" font-size="12" fill="#854f0b">Your small step</text>
+        <text x="898" y="462" font-size="13.5" font-weight="600" fill="#633806">Go to bed soon after</text>
+        <text x="898" y="480" font-size="13.5" font-weight="600" fill="#633806">your night shift</text>
+        <text id="why" x="898" y="497" font-size="11.5" fill="#854f0b" opacity="0">Why? NIOSH shift-work guide</text></g>
+      <g id="c5"><text x="890" y="532" font-size="12" fill="#888">Check in</text>
+        <circle id="ck0" cx="925" cy="566" r="22" fill="#eceae3"/><text x="925" y="573" font-size="18" text-anchor="middle" fill="#0f6e56">✓</text>
+        <circle id="ck1" cx="990" cy="566" r="22" fill="#eceae3"/><text x="990" y="573" font-size="18" text-anchor="middle" fill="#6b6f76">~</text>
+        <circle id="ck2" cx="1055" cy="566" r="22" fill="#eceae3"/><text x="1055" y="573" font-size="18" text-anchor="middle" fill="#6b6f76">✗</text></g>
+    </g>
+
+    <g id="scrLapse" opacity="0">
+      <text x="990" y="222" font-size="18" font-weight="600" fill="#23262b" text-anchor="middle">Welcome back</text>
+      <rect x="890" y="246" width="200" height="96" rx="12" fill="#efedfb"/>
+      <text x="990" y="272" font-size="12" fill="#534ab7" text-anchor="middle">Your reason</text>
+      <text x="990" y="298" font-size="14" fill="#3c3489" text-anchor="middle" font-style="italic">"để tối còn sức</text>
+      <text x="990" y="320" font-size="14" fill="#3c3489" text-anchor="middle" font-style="italic">gọi video cho con"</text>
+      <text x="990" y="378" font-size="14" fill="#23262b" text-anchor="middle">Today, just close</text>
+      <text x="990" y="398" font-size="14" fill="#23262b" text-anchor="middle">the curtains.</text>
+      <text x="990" y="446" font-size="12.5" fill="#0f6e56" text-anchor="middle">Nothing was reset.</text>
+    </g>
+  </g>
+
+  <!-- caption -->
+  <rect x="0" y="664" width="1280" height="56" fill="#23262b" opacity="0.9"/>
+  <text id="caption" x="640" y="699" font-size="20" fill="#ffffff" text-anchor="middle"></text>
+</svg>
+<div id="ctrl">
+  <button id="play">Pause</button>
+  <input id="seek" type="range" min="0" max="35" step="0.05" value="0" aria-label="Time">
+  <span id="tlabel">0.0 s</span>
+  <span>· chapters: click the dots</span>
+</div>
+</div>
+<script>
+const T = 35;
+const S = [
+  [0, "1 · Measure", "The band counts steps and arm movement 25 times a second, minute by minute."],
+  [5, "2 · Sleep", "After a night shift it estimates the main sleep window. An estimate, never a diagnosis."],
+  [9, "3 · Pair", "The band shows a 6-digit code; the user types it. Without it, nobody can read the band."],
+  [13, "4 · Sync", "Each time the app opens, only new minutes move over Bluetooth: a few seconds, encrypted."],
+  [18, "5 · Suggest", "The app shows where the user is, with its source, and suggests one small step. The user decides."],
+  [23, "6 · Check in", "One press on the band: done, partly or not today. It shows up in the app."],
+  [27, "7 · Welcome back", "Missed two days? No blame, no reset: welcome back with the user's own words."],
+  [31, "8 · Private", "Data stays on the band and the phone. No account, no cloud copy, delete any time."],
+];
+const $ = id => document.getElementById(id);
+const NS = "http://www.w3.org/2000/svg";
+const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const ease = x => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+const fade = (t, a, b, f = 0.4) => Math.min(seg(t, a, a + f), 1 - seg(t, b - f, b));
+const mix = (c1, c2, k) => { const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16)); const a = p(c1), b = p(c2); return "#" + a.map((v, i) => Math.round(v + (b[i] - v) * k).toString(16).padStart(2, "0")).join(""); };
+
+const dots = $("dots");
+S.forEach((s, i) => { const c = mk("circle", { cx: 1060 + i * 24, cy: 60, r: 7, fill: "#cfc9bc", style: "cursor:pointer" }, dots); c.addEventListener("click", () => { cur = s[0] + 0.01; startAt = performance.now() - cur * 1000; }); });
+const codeBoxes = $("codeBoxes"), digits = [];
+for (let i = 0; i < 6; i++) { mk("rect", { x: 896 + i * 32, y: 270, width: 26, height: 38, rx: 6, fill: "#fff", stroke: "#cfc9bc" }, codeBoxes); digits.push(mk("text", { x: 909 + i * 32, y: 297, "font-size": 20, "font-weight": 600, "text-anchor": "middle", fill: "#23262b" }, codeBoxes)); }
+const packets = []; for (let i = 0; i < 8; i++) packets.push(mk("rect", { width: 34, height: 14, rx: 4, fill: "#1d9e75", opacity: 0 }, $("packets")));
+const cal = $("cal"); const days = ["M", "T", "W", "T", "F", "S", "S"];
+days.forEach((d, i) => { const miss = i === 3 || i === 4; mk("rect", { x: 170 + i * 52, y: 584, width: 40, height: 40, rx: 8, fill: miss ? "none" : "#c4e6d8", stroke: miss ? "#a9a397" : "#1d9e75", "stroke-dasharray": miss ? "4 4" : "" }, cal); mk("text", { x: 190 + i * 52, y: 646, "font-size": 13, "text-anchor": "middle", fill: "#6b6f76" }, cal).textContent = d; });
+mk("text", { x: 548, y: 610, "font-size": 14, "text-anchor": "start", fill: "#6b6f76" }, cal).textContent = "two quiet days, then back";
+const link = $("link"), L = link.getTotalLength();
+const fmt = n => n.toLocaleString("en-US");
+
+function render(t) {
+  let si = 0; S.forEach((s, i) => { if (t >= s[0]) si = i; });
+  $("scene").textContent = S[si][1];
+  $("caption").textContent = S[si][2];
+  [...dots.children].forEach((c, i) => c.setAttribute("fill", i === si ? "#1d9e75" : "#cfc9bc"));
+
+  const night = Math.min(seg(t, 5, 5.8), 1 - seg(t, 8.2, 9));
+  const bg = mix("#f4f1ea", "#1e2433", night);
+  $("bg").setAttribute("fill", bg); $("moonCut").setAttribute("fill", bg);
+  $("title").setAttribute("fill", mix("#23262b", "#eef0f6", night));
+  $("scene").setAttribute("fill", mix("#6b6f76", "#b9bfd0", night));
+  $("moon").setAttribute("opacity", night);
+
+  const sway = t < 5 ? Math.sin(t * 5.2) * 5 * fade(t, 0, 5) : 0;
+  $("band").setAttribute("transform", `rotate(${sway} 350 360)`);
+  const wv = fade(t, 0, 5.2);
+  let pts = []; for (let x = 0; x <= 360; x += 6) { const ph = x / 360 * 10 + t * 6; pts.push(`${170 + x},${578 + Math.sin(ph) * 16 * wv + Math.sin(ph * 2.3) * 5 * wv}`); }
+  $("wave").setAttribute("points", pts.join(" ")); $("wave").setAttribute("opacity", wv); $("waveLbl").setAttribute("opacity", wv);
+  $("sleepBar").setAttribute("opacity", fade(t, 5.3, 9));
+  $("sleepFill").setAttribute("width", 360 * ease(seg(t, 5.8, 8)));
+  $("cal").setAttribute("opacity", fade(t, 27.2, 31));
+
+  // OLED
+  let o1 = "", o2 = "";
+  if (t < 5) { o1 = fmt(Math.floor(1248 * seg(t, 0.3, 4.6))); o2 = "steps · walk " + Math.floor(12 * seg(t, 0.3, 4.6)) + "'"; }
+  else if (t < 9) { o1 = "Zz"; o2 = "sleeping"; }
+  else if (t < 13) { o1 = "482913"; o2 = "pair code"; }
+  else if (t < 18) { o1 = "sync"; o2 = ".".repeat(1 + Math.floor(t * 3) % 3); }
+  else if (t < 23) { o1 = "6,214"; o2 = "steps"; }
+  else if (t < 27) { if (t < 24.2) { o1 = "Done?"; o2 = "press = check in"; } else { o1 = "✓ Done"; o2 = "saved"; } }
+  else if (t < 31) { o1 = "21:30"; o2 = "hi again"; }
+  else { o1 = "6,214"; o2 = "steps"; }
+  $("oled1").textContent = o1; $("oled2").textContent = o2;
+  $("oled1").setAttribute("font-size", (t >= 9 && t < 13) ? 30 : 34);
+  const press = t > 23.9 && t < 24.3;
+  $("btn").setAttribute("r", press ? 6 : 9); $("btn").setAttribute("fill", press ? "#1d9e75" : "#9aa7b2");
+
+  // link + lock
+  const paired = t >= 12.2;
+  link.setAttribute("stroke", paired ? "#1d9e75" : "#c9c4b8");
+  link.setAttribute("stroke-dashoffset", -t * 30);
+  $("linkLbl").setAttribute("opacity", seg(t, 12.2, 12.8) * (t < 31 ? 1 : 0.6));
+  $("lock").setAttribute("opacity", seg(t, 9.2, 9.6));
+  $("shackle").setAttribute("transform", `translate(0 ${paired ? 0 : -8})`);
+
+  packets.forEach((p, i) => {
+    const st = 13.3 + i * 0.5, k = seg(t, st, st + 1.2);
+    const vis = t > st && t < st + 1.2 && t < 17.8;
+    const pt = link.getPointAtLength(L * ease(k));
+    p.setAttribute("x", pt.x - 17); p.setAttribute("y", pt.y - 7); p.setAttribute("opacity", vis ? 1 : 0);
+  });
+  const tk = seg(t, 24.3, 25.3), tp = link.getPointAtLength(L * ease(tk));
+  $("tapDot").setAttribute("cx", tp.x); $("tapDot").setAttribute("cy", tp.y);
+  $("tapDot").setAttribute("opacity", t > 24.3 && t < 25.3 ? 1 : 0);
+
+  // phone screens
+  const scr = { scrIdle: fade(t, -1, 9.2), scrPair: fade(t, 9, 13.2), scrSync: fade(t, 13, 18.2), scrToday: Math.max(fade(t, 18, 27.2), fade(t, 31, 36)), scrLapse: fade(t, 27, 31.2) };
+  for (const k in scr) $(k).setAttribute("opacity", scr[k]);
+  digits.forEach((d, i) => d.textContent = t > 9.6 + i * 0.35 ? "482913"[i] : "");
+  $("pairBtn").setAttribute("fill", t > 11.9 ? "#1d9e75" : "#cfe9df");
+  $("syncFill").setAttribute("width", 176 * seg(t, 13.5, 17.5));
+  $("syncCount").textContent = fmt(Math.floor(1440 * seg(t, 13.5, 17.5)));
+  const base = t >= 31 ? 31 : 18;
+  ["c1", "c2", "c3", "c4", "c5"].forEach((id, i) => { const k = ease(seg(t, base + 0.2 + i * 0.5, base + 0.7 + i * 0.5)); $(id).setAttribute("opacity", k); $(id).setAttribute("transform", `translate(0 ${(1 - k) * 12})`); });
+  $("walkFill").setAttribute("width", 184 * 0.84 * ease(seg(t, base + 1.4, base + 2.6)));
+  $("why").setAttribute("opacity", t >= 21.2 ? 1 : 0);
+  $("ck0").setAttribute("fill", t > 25.3 && t < 27.2 ? "#9fe1cb" : (t >= 31 ? "#9fe1cb" : "#eceae3"));
+
+  const pv = fade(t, 31.2, 36);
+  $("server").setAttribute("opacity", pv); $("keep").setAttribute("opacity", pv);
+}
+
+let cur = 0, playing = true, startAt = performance.now();
+const params = new URLSearchParams(location.search);
+if (params.has("capture")) { document.body.classList.add("capture"); playing = false; }
+window.renderAt = t => { cur = t; render(t); };
+function loop(now) {
+  if (playing) { cur = ((now - startAt) / 1000) % T; render(cur); $("seek").value = cur; $("tlabel").textContent = cur.toFixed(1) + " s"; }
+  requestAnimationFrame(loop);
+}
+$("play").onclick = () => { playing = !playing; $("play").textContent = playing ? "Pause" : "Play"; if (playing) startAt = performance.now() - cur * 1000; };
+$("seek").oninput = e => { cur = +e.target.value; render(cur); $("tlabel").textContent = cur.toFixed(1) + " s"; if (playing) startAt = performance.now() - cur * 1000; };
+render(0);
+if (!params.has("capture")) requestAnimationFrame(loop);
+</script>
+</body>
+</html>

@@ -1,0 +1,946 @@
+{
+  "format": 1,
+  "note": "BloomBack daily health-knowledge questions (Chi, thread 0007). The app shows only questions with an 'approved' date. Fields are described in README.md.",
+  "questions": [
+    {
+      "id": "sleep-adult-hours",
+      "topic": "sleep",
+      "question": {
+        "en": "How much sleep does CDC recommend each day for adults aged 18 to 60?"
+      },
+      "choices": [
+        {
+          "en": "5 to 6 hours"
+        },
+        {
+          "en": "7 or more hours"
+        },
+        {
+          "en": "Exactly 8 hours"
+        },
+        {
+          "en": "10 or more hours"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "CDC: the recommended daily sleep for adults aged 18–60 years is \"7 or more hours\". The amount of sleep you need changes as you age."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-same-time",
+      "topic": "sleep",
+      "question": {
+        "en": "Which of these habits does CDC list as one that can improve your sleep?"
+      },
+      "choices": [
+        {
+          "en": "Going to bed and getting up at the same time every day"
+        },
+        {
+          "en": "Going to bed at a different time each night"
+        },
+        {
+          "en": "Sleeping several hours longer on days off"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: habits that can improve your sleep include \"Going to bed and getting up at the same time every day.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-devices-30",
+      "topic": "sleep",
+      "question": {
+        "en": "CDC suggests turning off electronic devices how long before bedtime?"
+      },
+      "choices": [
+        {
+          "en": "At least 30 minutes before bedtime"
+        },
+        {
+          "en": "At least 5 minutes before bedtime"
+        },
+        {
+          "en": "Only once you are already in bed"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Turning off electronic devices at least 30 minutes before bedtime.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-caffeine-time",
+      "topic": "sleep",
+      "question": {
+        "en": "For better sleep, when does CDC suggest avoiding caffeine?"
+      },
+      "choices": [
+        {
+          "en": "In the afternoon or evening"
+        },
+        {
+          "en": "Only in the morning"
+        },
+        {
+          "en": "Only in the last 10 minutes before bed"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Avoiding caffeine in the afternoon or evening.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-bedroom",
+      "topic": "sleep",
+      "question": {
+        "en": "How does CDC describe a bedroom that helps you sleep?"
+      },
+      "choices": [
+        {
+          "en": "Quiet, relaxing, and at a cool temperature"
+        },
+        {
+          "en": "Warm, with the television on"
+        },
+        {
+          "en": "Brightly lit"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Keeping your bedroom quiet, relaxing, and at a cool temperature.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-meals-alcohol",
+      "topic": "sleep",
+      "question": {
+        "en": "What does CDC suggest avoiding before bedtime?"
+      },
+      "choices": [
+        {
+          "en": "Large meals and alcohol"
+        },
+        {
+          "en": "Dimming the lights"
+        },
+        {
+          "en": "Reading a paper book"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Avoiding large meals and alcohol before bedtime.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-quality-signs",
+      "topic": "sleep",
+      "question": {
+        "en": "Which of these does CDC list as a sign of poor sleep quality?"
+      },
+      "choices": [
+        {
+          "en": "Repeatedly waking up during the night"
+        },
+        {
+          "en": "Waking up at your usual time"
+        },
+        {
+          "en": "Having dreams"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: signs of poor sleep quality include \"Trouble falling asleep\", \"Repeatedly waking up during the night\" and \"Feeling sleepy or tired even after getting enough sleep\". Talk to your healthcare provider if you regularly have problems sleeping."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Sleep",
+          "url": "https://www.cdc.gov/sleep/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-nightshift-dark",
+      "topic": "sleep",
+      "question": {
+        "en": "When you sleep in the daytime after a night shift, what does NIOSH say about light in the bedroom?"
+      },
+      "choices": [
+        {
+          "en": "The sleep environment should be very dark, or wear an eye mask"
+        },
+        {
+          "en": "Normal daylight in the room is fine"
+        },
+        {
+          "en": "A bright room helps you sleep longer"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "NIOSH: \"Be sure that your sleep environment is very dark … or wear an eye mask while sleeping. Daylight will trigger waking, and you will sleep better and longer if you sleep in darkness.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "NIOSH (U.S. National Institute for Occupational Safety and Health, part of CDC), Training for Nurses on Shift Work and Long Work Hours, Module 9",
+          "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod9/05.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-nightshift-home-to-bed",
+      "topic": "sleep",
+      "question": {
+        "en": "What does NIOSH advise night-shift workers to do when they arrive home after the shift?"
+      },
+      "choices": [
+        {
+          "en": "Go directly to bed"
+        },
+        {
+          "en": "Do chores and errands first"
+        },
+        {
+          "en": "Stay up until the afternoon"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "NIOSH: \"Go directly to bed when you arrive home.\" \"Do not use your early morning time to do chores or errands, because this is prime sleep time for night shift nurses.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "NIOSH (U.S. National Institute for Occupational Safety and Health, part of CDC), Training for Nurses on Shift Work and Long Work Hours, Module 9",
+          "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod9/05.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "sleep-day-nap-length",
+      "topic": "sleep",
+      "question": {
+        "en": "If you work a daytime schedule, what length of nap does NIOSH recommend?"
+      },
+      "choices": [
+        {
+          "en": "A brief nap of less than 20 minutes"
+        },
+        {
+          "en": "A nap of about 1 hour"
+        },
+        {
+          "en": "A nap of 3 hours or more"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "NIOSH: \"If you work a daytime schedule, a brief (<20-minute) nap is recommended.\" A brief nap can increase alertness for a couple of hours, with less grogginess, and does not disrupt subsequent sleep at night."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "NIOSH (U.S. National Institute for Occupational Safety and Health, part of CDC), Training for Nurses on Shift Work and Long Work Hours, Module 7",
+          "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod7/05.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-weekly-moderate",
+      "topic": "movement",
+      "question": {
+        "en": "How much moderate-intensity physical activity per week do the WHO 2020 guidelines recommend for all adults?"
+      },
+      "choices": [
+        {
+          "en": "30–60 minutes"
+        },
+        {
+          "en": "150–300 minutes"
+        },
+        {
+          "en": "At least 600 minutes"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "WHO 2020: \"All adults should undertake 150–300 min of moderate-intensity, or 75–150 min of vigorous-intensity physical activity, or some equivalent combination … per week.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-weekly-vigorous",
+      "topic": "movement",
+      "question": {
+        "en": "If the activity is vigorous-intensity, how much per week do the WHO 2020 guidelines recommend for all adults?"
+      },
+      "choices": [
+        {
+          "en": "10–20 minutes"
+        },
+        {
+          "en": "75–150 minutes"
+        },
+        {
+          "en": "300–450 minutes"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "WHO 2020: \"All adults should undertake 150–300 min of moderate-intensity, or 75–150 min of vigorous-intensity physical activity, or some equivalent combination … per week.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-strength-days",
+      "topic": "movement",
+      "question": {
+        "en": "On how many days a week do the WHO 2020 guidelines mention muscle-strengthening activities for additional health benefits?"
+      },
+      "choices": [
+        {
+          "en": "On 2 or more days a week"
+        },
+        {
+          "en": "Once a month"
+        },
+        {
+          "en": "Every day, for at least an hour"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "WHO 2020: \"additional health benefits will occur through participation in muscle-strengthening activities at moderate or greater intensity on 2 or more days a week\"."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-work-walking-counts",
+      "topic": "movement",
+      "question": {
+        "en": "Does physical activity done at work count towards the recommended weekly amounts?"
+      },
+      "choices": [
+        {
+          "en": "Yes: activity at work, leisure, home or during transportation counts"
+        },
+        {
+          "en": "No: only sport counts"
+        },
+        {
+          "en": "No: only activity in a gym counts"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "WHO 2020: \"Physical activity accrued at work, leisure, home or during transportation count towards the recommended amounts.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-any-duration",
+      "topic": "movement",
+      "question": {
+        "en": "Do short bouts of moderate or vigorous activity count towards the WHO 2020 recommendations?"
+      },
+      "choices": [
+        {
+          "en": "Yes: bouts of any duration count"
+        },
+        {
+          "en": "Only bouts of at least 10 minutes"
+        },
+        {
+          "en": "Only bouts of at least 30 minutes"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "WHO 2020: \"bouts of any duration now count towards these recommendations\". This differs from the requirement of bouts of at least 10 min in the previous WHO 2010 guidelines."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-some-better-than-none",
+      "topic": "movement",
+      "question": {
+        "en": "What do the WHO 2020 guidelines say about doing only a little physical activity?"
+      },
+      "choices": [
+        {
+          "en": "Some physical activity is better than none"
+        },
+        {
+          "en": "It has no benefit below 150 minutes a week"
+        },
+        {
+          "en": "It only counts if you do it every day"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "WHO 2020: the guidelines \"reaffirm messages that some physical activity is better than none, that more physical activity is better for optimal health outcomes\"."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-limit-sedentary",
+      "topic": "movement",
+      "question": {
+        "en": "What do the WHO 2020 guidelines say about time spent sedentary (for example, sitting)?"
+      },
+      "choices": [
+        {
+          "en": "All adults should limit the amount of time spent sedentary"
+        },
+        {
+          "en": "Sedentary time does not matter"
+        },
+        {
+          "en": "Adults should sit for most of the day"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "WHO 2020: \"all adults should limit the amount of time spent sedentary\", and \"replacing sedentary time with any intensity of physical activity (including light intensity) has health benefits\"."
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "WHO (World Health Organization) 2020 guidelines on physical activity and sedentary behaviour (Bull et al., BJSM 2020; CC BY 4.0)",
+          "url": "https://bjsm.bmj.com/content/54/24/1451"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-talk-test",
+      "topic": "movement",
+      "question": {
+        "en": "In CDC's \"talk test\", a person doing moderate-intensity aerobic activity can…"
+      },
+      "choices": [
+        {
+          "en": "Talk, but not sing, during the activity"
+        },
+        {
+          "en": "Sing easily during the activity"
+        },
+        {
+          "en": "Not say more than a few words without pausing for a breath"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"a person doing moderate-intensity aerobic activity can talk, but not sing, during the activity. A person doing vigorous-intensity activity cannot say more than a few words without pausing for a breath.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), How to Measure Physical Activity Intensity",
+          "url": "https://www.cdc.gov/physical-activity-basics/measuring/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-heat-coolest-time",
+      "topic": "movement",
+      "question": {
+        "en": "When it is hot outside, when does CDC suggest doing outdoor activities, if possible?"
+      },
+      "choices": [
+        {
+          "en": "During the coolest parts of the day or evening"
+        },
+        {
+          "en": "At midday"
+        },
+        {
+          "en": "The time of day makes no difference"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Do outdoor activities during the coolest parts of the day or evening, if possible.\" Also: \"Stay in the shade as much as possible. Take breaks when you can.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Heat and Your Health",
+          "url": "https://www.cdc.gov/heat-health/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "movement-heat-urine-colour",
+      "topic": "movement",
+      "question": {
+        "en": "On hot days, which urine colour usually means you are drinking enough water, according to CDC?"
+      },
+      "choices": [
+        {
+          "en": "Light yellow or clear"
+        },
+        {
+          "en": "Dark yellow"
+        },
+        {
+          "en": "Brown"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Check your urine color. When it's light yellow or clear, it usually means you are drinking enough water.\" \"Carry a water bottle. Drink and refill it throughout the day.\""
+      },
+      "askDoctor": false,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About Heat and Your Health",
+          "url": "https://www.cdc.gov/heat-health/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-a1c-what",
+      "topic": "numbers",
+      "question": {
+        "en": "What does the A1C (HbA1c) test measure?"
+      },
+      "choices": [
+        {
+          "en": "Your average blood sugar level over the past 2 or 3 months"
+        },
+        {
+          "en": "Your blood sugar level at this moment only"
+        },
+        {
+          "en": "Your blood pressure"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"The A1C test measures your average blood sugar level over the past 2 or 3 months.\""
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Diabetes Testing",
+          "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-hba1c-5-9",
+      "topic": "numbers",
+      "question": {
+        "en": "An A1C (HbA1c) of 5.9% is in which range?"
+      },
+      "choices": [
+        {
+          "en": "Normal: below 5.7%"
+        },
+        {
+          "en": "Prediabetes: 5.7–6.4%"
+        },
+        {
+          "en": "Diabetes: 6.5% or above"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "CDC, A1C test: \"Normal: below 5.7%. Prediabetes: 5.7–6.4%. Diabetes: 6.5% or above.\""
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Diabetes Testing",
+          "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-fasting-110",
+      "topic": "numbers",
+      "question": {
+        "en": "A fasting blood sugar of 110 mg/dL is in which range?"
+      },
+      "choices": [
+        {
+          "en": "Normal: 99 mg/dL or below"
+        },
+        {
+          "en": "Prediabetes: 100–125 mg/dL (5.6–6.9 mmol/L)"
+        },
+        {
+          "en": "Diabetes: 126 mg/dL (7.0 mmol/L) or above"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "CDC, fasting blood sugar test: \"Normal: 99 mg/dL or below. Prediabetes: 100–125 mg/dL. Diabetes: 126 mg/dL or above.\" The Department of Health Abu Dhabi gives the same values as 100–125 mg/dL (5.6–6.9 mmol/L) and 126 mg/dL (7.0 mmol/L)."
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Diabetes Testing",
+          "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html"
+        },
+        {
+          "title": "DoH (Department of Health, Abu Dhabi), Standard for Diabetes Mellitus Type 1 and 2 (2024)",
+          "url": "https://www.doh.gov.ae/-/media/CB9099900C0D44BAAEA3B49E4DD73BED.ashx"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-prediabetes-symptoms",
+      "topic": "numbers",
+      "question": {
+        "en": "Do prediabetes and type 2 diabetes always cause symptoms?"
+      },
+      "choices": [
+        {
+          "en": "No: they often don't have any symptoms"
+        },
+        {
+          "en": "Yes: there are always clear symptoms"
+        },
+        {
+          "en": "Only in people over 65"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Prediabetes and type 2 diabetes often don't have any symptoms.\" That's why people with any risk factors are urged to ask their doctor if they should be screened."
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Diabetes Testing",
+          "url": "https://www.cdc.gov/diabetes/diabetes-testing/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bp-what",
+      "topic": "numbers",
+      "question": {
+        "en": "What is blood pressure?"
+      },
+      "choices": [
+        {
+          "en": "The force of your blood pushing against the walls of your arteries as your heart pumps"
+        },
+        {
+          "en": "The number of times your heart beats in a minute"
+        },
+        {
+          "en": "The amount of sugar in your blood"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"Blood pressure is the force of your blood pushing against the walls of your arteries as your heart pumps. High blood pressure is when that force is consistently too high.\""
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About High Blood Pressure",
+          "url": "https://www.cdc.gov/high-blood-pressure/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bp-no-symptoms",
+      "topic": "numbers",
+      "question": {
+        "en": "How can you know if you have high blood pressure?"
+      },
+      "choices": [
+        {
+          "en": "Only by measuring your blood pressure: it usually has no signs or symptoms"
+        },
+        {
+          "en": "You will always have a headache"
+        },
+        {
+          "en": "You can always feel it"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"High blood pressure usually has no signs or symptoms, so many people do not know they have it. The only way to know if you have high blood pressure is to measure your blood pressure regularly.\""
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About High Blood Pressure",
+          "url": "https://www.cdc.gov/high-blood-pressure/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bp-risk-behaviours",
+      "topic": "numbers",
+      "question": {
+        "en": "Which of these does CDC list as a behaviour that can increase the risk of high blood pressure?"
+      },
+      "choices": [
+        {
+          "en": "Eating a diet high in sodium and low in potassium"
+        },
+        {
+          "en": "Getting enough physical activity"
+        },
+        {
+          "en": "Not smoking"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC, behaviors that can increase risk: \"Eating a diet high in sodium and low in potassium. Not getting enough physical activity. Drinking too much alcohol. Using tobacco products…\""
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), About High Blood Pressure",
+          "url": "https://www.cdc.gov/high-blood-pressure/about/index.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bmi-adult-50",
+      "topic": "numbers",
+      "question": {
+        "en": "For an adult aged 50, which BMI range is the \"Healthy Weight\" category?"
+      },
+      "choices": [
+        {
+          "en": "Less than 18.5"
+        },
+        {
+          "en": "18.5 to less than 25"
+        },
+        {
+          "en": "25 to less than 30"
+        },
+        {
+          "en": "It depends on age: the range is higher after 50"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "CDC: \"For adults 20 and older, BMI categories are based on a person's BMI regardless of age, sex, or race.\" Healthy Weight: \"18.5 to less than 25\"."
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Adult BMI Categories",
+          "url": "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bmi-what",
+      "topic": "numbers",
+      "question": {
+        "en": "What is BMI?"
+      },
+      "choices": [
+        {
+          "en": "A calculated measure of body weight relative to height"
+        },
+        {
+          "en": "A scan that measures body fat directly"
+        },
+        {
+          "en": "A blood test"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"BMI is a calculated measure of body weight relative to height.\" It is a person's weight (in kilograms) divided by the square of their height (in meters)."
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Adult BMI Categories",
+          "url": "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    },
+    {
+      "id": "numbers-bmi-screening",
+      "topic": "numbers",
+      "question": {
+        "en": "What does CDC say about using BMI to look at a person's health?"
+      },
+      "choices": [
+        {
+          "en": "BMI is a screening measure and should be considered with other factors"
+        },
+        {
+          "en": "BMI alone shows whether a person is healthy"
+        },
+        {
+          "en": "BMI is only meant for athletes"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CDC: \"BMI is a screening measure. BMI should be considered with other factors when assessing an individual's health.\" If you have questions about your BMI, talk with your health care provider."
+      },
+      "askDoctor": true,
+      "sources": [
+        {
+          "title": "CDC (U.S. Centers for Disease Control and Prevention), Adult BMI Categories",
+          "url": "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html"
+        }
+      ],
+      "approved": "2026-11-16",
+      "approvedNote": "Chi, 16/11, from docs/design/quiz-30-questions-2026-11-16.pdf"
+    }
+  ]
+}

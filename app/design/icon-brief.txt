@@ -1,0 +1,13 @@
+A square app icon for "BloomBack", a calm phone app that helps shift workers sleep a little more and walk a little more, one small step at a time, and come back after a break without blame.
+
+Subject: one small sprout with two rounded leaves growing from a short curved stem, centred, filling about 55 percent of the height. The stem curves gently like a returning arc, so it reads as "growing back". One leaf is slightly larger than the other.
+
+Colours (flat, solid fills only):
+- Background: warm off-white #F4F1EA, filling the whole square edge to edge.
+- Sprout leaves and stem: deep sage green #2E7D5B.
+- One small accent: a crescent moon shape in soft gold #E2B957 tucked behind the smaller leaf, about one fifth the size of the sprout, partly hidden by the leaf (sleep + growth).
+Brightness order: background lightest by area, green sprout is the one strong shape, gold moon is a small accent.
+
+Style: flat vector illustration, simple geometric shapes, smooth curves, generous empty space around the sprout. Must be unmistakable when shrunk to 40 pixels wide: the sprout silhouette must still read clearly.
+
+Do NOT draw: any text, letters or numbers; a brain; a heart; a lotus; a meditating person; any person or face; a hand; a bed or pillow; a clock; a watch or wristband; a phone; stars or sparkles; a sun; rays; a circle or rounded-square border; a badge or frame; drop shadows; bevels; gloss; gradients; glow; vignette; texture; 3D effects; rounded corners of its own. The background is one flat colour to all four edges.

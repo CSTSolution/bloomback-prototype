@@ -1,0 +1,22 @@
+.DS_Store
+.pio/
+.vscode/
+.env
+.env.*
+*.bin
+*.elf
+# Real data downloaded from a band worn by a person stays out of git.
+wearable/data/
+*-watch.json
+*-watch-minutes.csv
+
+# server
+server/node_modules/
+server/data/
+
+# image-gen cache
+tools/image-gen/.cache/
+# the web demo build (deploy/build-demo.sh), shipped by deploy.sh, not kept in git
+server/web/demo/
+
+__pycache__/

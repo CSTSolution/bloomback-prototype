@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BloomBack warm off-white, same as the app background and icon -->
+    <color name="bb_splash">#F4F1EA</color>
+</resources>
